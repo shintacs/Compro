@@ -9,7 +9,12 @@ int get_sum(vector<int> v)
 
     for(int i = 0; i < 3; i++)
     {
-        sum += v[i];
+        if(v[i] >= 0){
+            sum += v[i];
+        }else{
+            sum += v[i] * (-1);
+        }
+        
     }
 
     return sum;
@@ -36,15 +41,23 @@ int main()
         params.push_back(v);
     }
 
-    int max = 0;
-    for(int i = 0; i < n; i++)
+    int tops_sum = 0;
+    for(int i = 0; i < 3; i++)
     {
-        int sum = get_sum(params[i]);
-        cout << params[i][0] << params[i][1] << params[i][2] << endl;
+        int max = 0;
+        int idx;
+        for(int j = 0; j < n; j++)
+        {
+            int sum = get_sum(params[j]);
+        //cout << params[i][0] << params[i][1] << params[i][2] << endl;
 
-        if(sum > max)
-            max = sum;
-            cout << max << endl;
+            if(sum >= max)
+                max = sum;
+                idx = i;
+        }
+        cout << idx << endl;
+        params.erase(params.begin() + idx);
+        tops_sum += max;
     }
-    cout << max << endl;
+    cout << tops_sum << endl;
 }
