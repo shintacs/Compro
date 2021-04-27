@@ -3,6 +3,8 @@
 
 using namespace std;
 
+//２つのWAとその他TLE
+//ACは例題のみだった。
 int abs(vector<int> v, int b, long n)//absの計算
 {
     int sum = 0;
