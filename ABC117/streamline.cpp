@@ -1,8 +1,10 @@
 #include <iostream>
+#include <random>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
-//TLEが１つだけ解消できてない
 void swap(int* A, int* B)
 {
     int t = *A;
@@ -42,13 +44,16 @@ int main()
     int n, m, x;
 
     cin >> n >> m;
-    int X[m];
+    vector<int> X;
 
     for(int i=0; i<m; i++)
     {
         cin >> x;
-        X[i] = x;
+        X.push_back(x);
     }
+
+    mt19937_64 v;
+    shuffle(X.begin(), X.end(), v);
 
     quicksort(X, 0, m-1);
     
@@ -67,5 +72,4 @@ int main()
     }
     
     cout << sum << endl;
-    // cout << X[0] << " " << X[1] << " " << X[2] << " " << X[3] << " " << X[4] << endl;
 }
