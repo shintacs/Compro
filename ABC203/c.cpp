@@ -9,15 +9,15 @@ int main()
     int n;
     long long k;
     long long ai, bi;
-    typedef pair<long long, long long> ab;
-    vector<ab> AB;
+    vector<pair<long long, long long> > AB;
 
     cin >> n >> k;
 
     for(int i=0; i<n; i++)
     {
         cin >> ai >> bi;
-        AB.push_back({ai, bi});
+        pair<long long, long long> p = make_pair(ai, bi);
+        AB.push_back(p);
     }
 
     std::sort(AB.begin(), AB.end());
@@ -28,7 +28,7 @@ int main()
     {
         dist += k; 
         k = 0;
-        while(pos < AB.size() && AB.at(pos).first < dist)
+        while(pos < AB.size() && AB.at(pos).first <= dist)
         {
             k += AB.at(pos).second;
             pos++;
